@@ -1,0 +1,34 @@
+:host {
+  grid-area: 3 / 1 / 5 / 3;
+}
+
+.formating-results-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #f1f1f1;
+  padding: 1.2em;
+  font-size: 1.5rem;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  width: 800px;
+  height: 300px;
+
+  h2 {
+    width: 100%;
+  }
+
+  .formating-results-container__item {
+    width: 50%;
+  }
+
+  .formating-results-container__item:nth-child(4) {
+    width: 100%;
+
+    padding: 0.2em;
+    div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

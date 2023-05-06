@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <app-formating-form
+    (cssGenerator)="onCssChanged($event)"
+  ></app-formating-form>
+  <app-css-container [generatedCss]="generatedCss"></app-css-container>
+
+  <app-results-container [generatedCss]="generatedCss"></app-results-container>
+</div>

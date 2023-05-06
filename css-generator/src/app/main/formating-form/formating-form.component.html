@@ -1,0 +1,41 @@
+<div class="formating-container">
+  <h2 class="title">Formatowanie</h2>
+  <div class="input-container">
+    <div class="input-container__item">
+      <label for="text-color">Kolor tekstu</label>
+      <input
+        type="text"
+        name="text-color"
+        [(ngModel)]="color"
+        (ngModelChange)="onCssChange()"
+      />
+    </div>
+    <div class="input-container__item">
+      <label for="border-color">Border</label>
+      <input
+        type="text"
+        name="border-color"
+        [(ngModel)]="border"
+        (ngModelChange)="onCssChange()"
+      />
+    </div>
+    <div class="input-container__item">
+      <label for="bg-color">Kolor tła</label>
+      <input
+        type="text"
+        name="bg-color"
+        [(ngModel)]="bgColor"
+        (ngModelChange)="onCssChange()"
+      />
+    </div>
+    <div class="input-container__item">
+      <label for="box-shadow">Cień</label>
+      <input
+        type="text"
+        name="box-shadow"
+        [(ngModel)]="boxShadow"
+        (ngModelChange)="onCssChange()"
+      />
+    </div>
+  </div>
+</div>

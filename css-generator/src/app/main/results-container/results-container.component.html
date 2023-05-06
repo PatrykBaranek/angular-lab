@@ -1,0 +1,18 @@
+<div class="formating-results-container">
+  <h2 class="title">Podgląd formatowania</h2>
+  <div class="formating-results-container__item">
+    <h3>Pole tekstowe</h3>
+    <input type="text" value="Tekst pola input" [ngStyle]="getCss()" />
+  </div>
+  <div class="formating-results-container__item">
+    <h3>Przycisk</h3>
+    <button [ngStyle]="getCss()">Tekst przycisku</button>
+  </div>
+  <div class="formating-results-container__item">
+    <h3>Element blokowy (np. div)</h3>
+    <div [ngStyle]="getCss()">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+  </div>
+</div>
