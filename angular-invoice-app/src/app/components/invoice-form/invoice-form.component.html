@@ -1,25 +1,55 @@
 <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="issuer">
+    <h2>Issuer Information</h2>
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+
+    <!-- Repeat for other issuer fields -->
+  </div>
+
+  <div formGroupName="client">
+    <h2>Client Information</h2>
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+
+    <!-- Repeat for other client fields -->
+  </div>
+
   <mat-form-field>
     <mat-label>Invoice Number</mat-label>
     <input matInput formControlName="invoiceNumber" required />
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Date</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="date" required />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+  <!-- Repeat for other single value fields -->
 
-  <mat-form-field>
-    <mat-label>Customer Name</mat-label>
-    <input matInput formControlName="customerName" />
-  </mat-form-field>
+  <div formArrayName="invoiceItems">
+    <h2>Invoice Items</h2>
+    <div
+      *ngFor="let item of invoiceItems.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+      </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Amount</mat-label>
-    <input matInput formControlName="amount" />
-  </mat-form-field>
+      <!-- Repeat for other item fields -->
+
+      <button mat-button type="button" (click)="invoiceItems.removeAt(i)">
+        Remove Item
+      </button>
+    </div>
+
+    <button mat-button type="button" (click)="addInvoiceItem()">
+      Add Item
+    </button>
+  </div>
 
   <button mat-raised-button color="primary" type="submit">Submit</button>
 </form>

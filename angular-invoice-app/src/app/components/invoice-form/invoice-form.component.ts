@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-invoice-form',
@@ -7,15 +7,60 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./invoice-form.component.scss'],
 })
 export class InvoiceFormComponent implements OnInit {
-  invoiceForm!: FormGroup;
+  invoiceForm = this.fb.group({
+    issuer: this.fb.group({
+      name: ['', Validators.required],
+      city: ['', Validators.required],
+      address: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      nip: ['', Validators.required],
+      bankAccount: ['', Validators.required],
+    }),
+    client: this.fb.group({
+      name: ['', Validators.required],
+      city: ['', Validators.required],
+      address: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      nip: [''],
+    }),
+    invoiceNumber: ['', Validators.required],
+    issueDate: ['', Validators.required],
+    saleDate: ['', Validators.required],
+    paymentDeadline: ['', Validators.required],
+    paymentMethod: ['', Validators.required],
+    invoiceItems: this.fb.array([
+      this.fb.group({
+        name: ['', Validators.required],
+        quantity: ['', Validators.required],
+        unit: ['', Validators.required],
+        netPrice: ['', Validators.required],
+        vatRate: ['', Validators.required],
+        netValue: [''],
+        grossValue: [''],
+      }),
+    ]),
+  });
 
-  ngOnInit() {
-    this.invoiceForm = new FormGroup({
-      invoiceNumber: new FormControl(''),
-      date: new FormControl(''),
-      customerName: new FormControl(''),
-      amount: new FormControl(''),
-    });
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {}
+
+  get invoiceItems() {
+    return this.invoiceForm.get('invoiceItems') as FormArray;
+  }
+
+  addInvoiceItem() {
+    this.invoiceItems.push(
+      this.fb.group({
+        name: ['', Validators.required],
+        quantity: ['', Validators.required],
+        unit: ['', Validators.required],
+        netPrice: ['', Validators.required],
+        vatRate: ['', Validators.required],
+        netValue: [''],
+        grossValue: [''],
+      })
+    );
   }
 
   onSubmit() {
