@@ -3,30 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FeaturesComponent } from './features/features.component';
-import { FeaturesListComponent } from './features/features-list/features-list.component';
-import { FeaturesDetailsComponent } from './features/features-details/features-details.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
-import { TasksDetailComponent } from './tasks/tasks-detail/tasks-detail.component';
-import { KanbanComponent } from './tasks/kanban/kanban.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderModule } from './header/header.module';
+import { BoardModule } from './board/board.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FeaturesComponent,
-    FeaturesListComponent,
-    FeaturesDetailsComponent,
-    TasksComponent,
-    TasksListComponent,
-    TasksDetailComponent,
-    KanbanComponent
-  ],
+  declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HeaderModule,
+    BoardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
