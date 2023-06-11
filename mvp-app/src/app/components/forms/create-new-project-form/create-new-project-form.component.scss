@@ -1,0 +1,14 @@
+h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+}
+
+mat-form-field {
+  margin-bottom: 20px;
+}
