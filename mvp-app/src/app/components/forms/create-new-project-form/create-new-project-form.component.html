@@ -3,13 +3,15 @@
 <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <mat-label>Project Name</mat-label>
-    <input matInput formControlName="projectName" required />
+    <input matInput formControlName="projectName" />
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Project Description</mat-label>
-    <textarea matInput formControlName="projectDescription"></textarea>
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" type="submit">Add Project</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="projectForm.invalid"
+    type="submit"
+  >
+    Add Project
+  </button>
 </form>

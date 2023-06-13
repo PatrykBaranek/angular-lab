@@ -1,32 +1,30 @@
-<div cdkDropListGroup>
-  <!-- Here should be projects lists -->
-  <div class="example-container">
-    <h2>To do</h2>
-
-    <div
-      cdkDropList
-      [cdkDropListData]="todo"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
+<div class="card-container">
+  <mat-card
+    class="card"
+    *ngFor="let project of projects"
+    (click)="projectOptionsId = project.id"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ project.name }}</mat-card-title>
+      <mat-card-subtitle>{{
+        project.createdAt | date
+      }}</mat-card-subtitle></mat-card-header
     >
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>
-        {{ item }}
-      </div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>In Progres</h2>
-
-    <div
-      cdkDropList
-      [cdkDropListData]="done"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
-    >
-      <div class="example-box" *ngFor="let item of done" cdkDrag>
-        {{ item }}
-      </div>
-    </div>
-  </div>
+    <mat-card-actions *ngIf="projectOptionsId === project.id">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="onProjectDelete(project.id, $event)"
+      >
+        Delete
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSeeDetails(project.id, $event)"
+      >
+        See Details
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

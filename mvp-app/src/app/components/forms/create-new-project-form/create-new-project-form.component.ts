@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -9,15 +10,17 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class CreateNewProjectFormComponent implements OnInit {
   projectForm = new FormGroup({
-    projectName: new FormControl(''),
-    projectDescription: new FormControl(''),
+    projectName: new FormControl('', Validators.required),
   });
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
-    this.projectService.addNewProject(this.projectForm.value as string);
+    this.projectService.addNewProject(
+      this.projectForm.value.projectName as string
+    );
+    this.router.navigate(['/']);
   }
 }

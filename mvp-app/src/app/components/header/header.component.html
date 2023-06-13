@@ -1,14 +1,7 @@
 <mat-toolbar class="shadow justify-content-between px-5 mb-4">
+  <h2 class="mat-h2 px-0 mb-0" (click)="onTitleClick()">Joe Doe Board</h2>
   <div>
-    <span class="mat-h2">Joe Doe Board</span>
-  </div>
-  <div>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="onCreateNewProject()"
-      routerLink="/new-project"
-    >
+    <button mat-raised-button color="primary" (click)="onCreateNewProject()">
       New Project
     </button>
   </div>

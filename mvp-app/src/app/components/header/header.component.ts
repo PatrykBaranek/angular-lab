@@ -12,4 +12,8 @@ export class HeaderComponent {
   onCreateNewProject() {
     this.router.navigate(['/create-new-project']);
   }
+
+  onTitleClick() {
+    this.router.navigate(['/']);
+  }
 }

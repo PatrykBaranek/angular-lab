@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { Router } from '@angular/router';
+import { Project, ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-board',
@@ -11,27 +8,24 @@ import {
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit {
+  projects: Project[] = [];
+  projectOptionsId: string | null = null;
+
+  constructor(private projectService: ProjectService, private router: Router) {}
+
   ngOnInit(): void {
-    console.log('BoardComponent.ngOnInit');
+    this.projects = this.projectService.getProjects();
   }
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  onProjectDelete(projectId: string, event: Event) {
+    event.stopPropagation();
+    this.projectService.deleteProject(projectId);
+    this.projects = JSON.parse(localStorage.getItem('projects') as string);
+  }
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+  onSeeDetails(projectId: string, event: Event) {
+    event.stopPropagation();
+
+    this.router.navigate([`/project/${projectId}`]);
   }
 }
