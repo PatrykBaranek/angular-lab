@@ -8,7 +8,8 @@ import { HeaderModule } from './components/header/header.module';
 import { BoardModule } from './components/board/board.module';
 import { TaskModule } from './components/task/task.module';
 import { ModalModule } from './components/modal/modal.module';
-import { CreateNewProjectFormModule } from 'C:/Programming2022/Angular/angular-lab/mvp-app/src/app/components/forms/create-new-project-form/create-new-project-form.module';
+import { CreateNewProjectFormModule } from './components/forms/create-new-project-form/create-new-project-form.module';
+import { ProjectDetailsModule } from './components/project-details/project-details.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { CreateNewProjectFormModule } from 'C:/Programming2022/Angular/angular-l
     BoardModule,
     TaskModule,
     ModalModule,
+    ProjectDetailsModule,
     CreateNewProjectFormModule,
   ],
   providers: [],
