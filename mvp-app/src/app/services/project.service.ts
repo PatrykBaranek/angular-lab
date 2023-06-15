@@ -1,56 +1,56 @@
 import { Injectable } from '@angular/core';
 import { v4 as uuid } from 'uuid';
+import { Table } from './tables.service';
 
 export interface Project {
   id: string;
   name: string;
   createdAt: Date;
-  tasks?: unknown;
+  tables: Table[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
-  constructor() {}
+  projects: Project[] = [];
+
+  constructor() {
+    if (localStorage.getItem('projects') !== null) {
+      this.projects = JSON.parse(localStorage.getItem('projects') as string);
+    }
+  }
 
   addNewProject(projectName: string) {
-    let projects: Project[] = [];
-
-    if (localStorage.getItem('projects') !== null) {
-      projects = JSON.parse(localStorage.getItem('projects') as string);
-    }
-    projects.push({ id: uuid(), name: projectName, createdAt: new Date() });
-    localStorage.setItem('projects', JSON.stringify(projects));
+    this.projects.push({
+      id: uuid(),
+      name: projectName,
+      createdAt: new Date(),
+      tables: [],
+    });
+    this.saveToLocalStorage();
   }
 
   deleteProject(projectId: string) {
-    let projects: Project[] = [];
+    this.projects = this.projects.filter((project) => project.id !== projectId);
+    this.saveToLocalStorage();
+  }
 
-    if (localStorage.getItem('projects') !== null) {
-      projects = JSON.parse(localStorage.getItem('projects') as string);
-    }
-    projects = projects.filter((project) => project.id !== projectId);
-    localStorage.setItem('projects', JSON.stringify(projects));
+  updateProject(project: Project) {
+    const projectIndex = this.projects.findIndex((p) => p.id === project.id);
+    this.projects[projectIndex] = project;
+    this.saveToLocalStorage();
   }
 
   getProjects(): Project[] {
-    let projects: Project[] = [];
-
-    if (localStorage.getItem('projects') !== null) {
-      projects = JSON.parse(localStorage.getItem('projects') as string);
-    }
-
-    return projects;
+    return this.projects;
   }
 
   getProjectById(projectId: string): Project {
-    let projects: Project[] = [];
+    return this.projects.find((project) => project.id === projectId) as Project;
+  }
 
-    if (localStorage.getItem('projects') !== null) {
-      projects = JSON.parse(localStorage.getItem('projects') as string);
-    }
-
-    return projects.find((project) => project.id === projectId) as Project;
+  private saveToLocalStorage() {
+    localStorage.setItem('projects', JSON.stringify(this.projects));
   }
 }

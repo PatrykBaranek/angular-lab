@@ -1,3 +1,11 @@
-<button mat-icon-button color="warn">
-  <mat-icon color="warn">add_box</mat-icon>
+<button mat-raised-button color="primary" (click)="addTableToProject()">
+  <mat-icon>add_box</mat-icon>
+  Add Table
 </button>
+<div
+  class="table"
+  *ngFor="let table of project.tables"
+  cdkDragLockAxis="x"
+  cdkDrag
+  cdkDropListGroup
+></div>

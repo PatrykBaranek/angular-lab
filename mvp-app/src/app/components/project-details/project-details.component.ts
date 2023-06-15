@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Project, ProjectService } from 'src/app/services/project.service';
+import { AddTableFormComponent } from '../forms/add-table-form/add-table-form.component';
 
 @Component({
   selector: 'app-project-details',
@@ -13,8 +15,18 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   projectSubscription!: Subscription;
   constructor(
     private route: ActivatedRoute,
+    private dialog: MatDialog,
     private projectService: ProjectService
   ) {}
+
+  addTableToProject() {
+    const dialogRef = this.dialog.open(AddTableFormComponent, {
+      data: {
+        title: 'Add Table',
+        projectId: this.route.snapshot.params['id'],
+      },
+    });
+  }
 
   ngOnInit(): void {
     this.projectSubscription = this.route.params.subscribe((params) => {
