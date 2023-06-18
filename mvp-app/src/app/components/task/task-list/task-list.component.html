@@ -1,0 +1,22 @@
+<div
+  class="table-row"
+  cdkDropList
+  id="{{ table.id }}"
+  [cdkDropListData]="table.tasks"
+  [cdkDropListConnectedTo]="getConnectedListIds()"
+  (cdkDropListDropped)="onTaskDrop($event)"
+>
+  <mat-card *ngFor="let task of table.tasks" cdkDrag class="task-card">
+    <mat-card-content>
+      {{ task.description }}
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-icon-button color="primary" (click)="onEditTask(task)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="onDeleteTask(task)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

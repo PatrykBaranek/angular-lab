@@ -1,0 +1,22 @@
+.table-row {
+  height: 100%;
+  border-bottom: 1px solid #ddd;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  & .dragging {
+    visibility: hidden;
+  }
+}
+
+.task-card {
+  display: flex;
+  margin-bottom: 10px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}

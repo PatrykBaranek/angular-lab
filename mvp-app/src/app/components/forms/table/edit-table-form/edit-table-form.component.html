@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<form [formGroup]="formGroup">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Table Name"
+        name="tableName"
+        formControlName="tableName"
+      />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="accent" (click)="onCreate()">
+      Save Changes
+    </button>
+  </mat-dialog-actions>
+</form>

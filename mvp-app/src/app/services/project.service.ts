@@ -46,8 +46,14 @@ export class ProjectService {
     return this.projects;
   }
 
-  getProjectById(projectId: string): Project {
-    return this.projects.find((project) => project.id === projectId) as Project;
+  getProjectById(projectId: string) {
+    const project = this.projects.find((project) => project.id === projectId);
+
+    if (!project) {
+      throw new Error(`Project with id ${projectId} not found.`);
+    }
+
+    return project;
   }
 
   private saveToLocalStorage() {

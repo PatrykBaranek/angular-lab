@@ -1,0 +1,36 @@
+<button mat-raised-button color="primary" (click)="onAddTableToProject()">
+  <mat-icon>add_box</mat-icon>
+  Add Table
+</button>
+<div cdkDropListGroup>
+  <div
+    class="table-container"
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    [cdkDropListData]="project.tables"
+    (cdkDropListDropped)="onTableDrop($event)"
+  >
+    <div class="table" *ngFor="let table of project.tables" cdkDrag>
+      <div class="table-header" cdkDragHandle>
+        {{ table.name }}
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu>
+            <button mat-menu-item (click)="onEditTableFromProject(table.id)">
+              Edit
+            </button>
+            <button mat-menu-item (click)="onAddTaskToTable(table.id)">
+              Add Task
+            </button>
+            <button mat-menu-item (click)="onDeleteTableFromProject(table.id)">
+              Delete
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      <app-task-list [table]="table" [project]="project"></app-task-list>
+    </div>
+  </div>
+</div>

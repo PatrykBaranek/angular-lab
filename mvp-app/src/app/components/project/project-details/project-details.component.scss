@@ -1,0 +1,39 @@
+:host {
+  padding: 1rem;
+}
+.table-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.table {
+  min-height: 400px;
+  min-width: 400px;
+  max-width: 450px;
+  padding: 0.2rem;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0.5em;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  cursor: move;
+
+  & mat-icon {
+    justify-self: flex-end;
+    &:hover {
+      color: red;
+    }
+  }
+}
