@@ -1,8 +1,11 @@
 :host {
   padding: 1rem;
+  height: 100%;
 }
+
 .table-container {
   display: flex;
+  min-height: 100%;
   gap: 30px;
   padding: 20px;
   overflow-x: auto;
@@ -10,12 +13,13 @@
 }
 
 .table {
+  height: 700px;
   min-height: 400px;
   min-width: 400px;
   max-width: 450px;
   padding: 0.2rem;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #222;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
@@ -25,8 +29,8 @@
   justify-content: space-between;
   height: 50px;
   padding: 0.5em;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  background-color: #111;
+  color: #e8e8e8;
   font-weight: bold;
   cursor: move;
 

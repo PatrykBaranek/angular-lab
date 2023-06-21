@@ -8,6 +8,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatMenuModule } from '@angular/material/menu';
 import { TablesService } from 'src/app/services/tables.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @NgModule({
   declarations: [ProjectDetailsComponent],
@@ -20,7 +21,7 @@ import { TablesService } from 'src/app/services/tables.service';
     DragDropModule,
     MatMenuModule,
   ],
-  providers: [TablesService],
+  providers: [ProjectService, TablesService],
   exports: [ProjectDetailsComponent],
 })
 export class ProjectDetailsModule {}

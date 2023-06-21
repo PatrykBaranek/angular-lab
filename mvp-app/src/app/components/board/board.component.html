@@ -1,30 +1,23 @@
 <div class="card-container">
-  <mat-card
+  <div
     class="card"
     *ngFor="let project of projects"
     (click)="projectOptionsId = project.id"
   >
-    <mat-card-header>
-      <mat-card-title>{{ project.name }}</mat-card-title>
-      <mat-card-subtitle>{{
-        project.createdAt | date
-      }}</mat-card-subtitle></mat-card-header
-    >
-    <mat-card-actions *ngIf="projectOptionsId === project.id">
-      <button
-        mat-raised-button
-        color="warn"
-        (click)="onProjectDelete(project.id, $event)"
-      >
-        Delete
-      </button>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onSeeDetails(project.id, $event)"
-      >
-        See Details
-      </button>
-    </mat-card-actions>
-  </mat-card>
+    <div class="content">
+      <p class="heading">{{ project.name }}</p>
+      <p class="para">
+        {{ project.createdAt | date }}
+      </p>
+
+      <div class="btn-container">
+        <button class="btn" (click)="onSeeDetails(project.id, $event)">
+          See Details
+        </button>
+        <button class="btn" (click)="onProjectDelete(project.id, $event)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

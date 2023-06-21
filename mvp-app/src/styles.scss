@@ -2,11 +2,23 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 $bgColor: #333;
-$fontColor: #fff;
+$fontColorBlack: #111;
+$fontColorLight: #e8e8e8;
+$linearGradient: linear-gradient(
+  45deg,
+  rgba(34, 193, 195, 1) 0%,
+  rgba(28, 27, 25, 1) 100%
+);
+$btnColor: #e8e8e8;
+
+* {
+  box-sizing: border-box;
+}
 
 html,
 body {
   height: 100%;
+  overflow: hidden;
 }
 body {
   margin: 0;

@@ -22,13 +22,20 @@ export class ProjectService {
   }
 
   addNewProject(projectName: string) {
-    this.projects.push({
+    const project = {
       id: uuid(),
       name: projectName,
       createdAt: new Date(),
       tables: [],
-    });
+    };
+
+    this.projects.push({ ...project });
+
     this.saveToLocalStorage();
+
+    return this.projects.find(
+      (project) => project.id === project.id
+    ) as Project;
   }
 
   deleteProject(projectId: string) {

@@ -1,6 +1,12 @@
+:host {
+  min-height: 100%;
+}
+
 .table-row {
   height: 100%;
   border-bottom: 1px solid #ddd;
+  padding: 0.5rem;
+  overflow-y: scroll;
 
   &:last-child {
     border-bottom: none;
@@ -9,11 +15,18 @@
   & .dragging {
     visibility: hidden;
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .task-card {
   display: flex;
+  margin-top: 10px;
   margin-bottom: 10px;
+  height: 100px;
+
   cursor: grab;
 
   &:active {

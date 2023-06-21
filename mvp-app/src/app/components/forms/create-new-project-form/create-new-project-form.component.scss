@@ -1,7 +1,7 @@
 @import "/src/styles.scss";
 h2 {
   text-align: center;
-  color: $fontColor;
+  color: $fontColorLight;
 }
 
 form {
@@ -9,6 +9,10 @@ form {
   flex-direction: column;
   width: 300px;
   margin: auto;
+}
+
+button:disabled {
+  display: none;
 }
 
 mat-form-field {

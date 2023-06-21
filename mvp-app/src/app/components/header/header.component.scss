@@ -1,5 +1,20 @@
 @import "/src/styles.scss";
 
 .header {
-  background-color: "#222";
+  background: $linearGradient;
+  color: $fontColorLight;
+
+  button {
+    background-color: #fff;
+    color: $fontColorBlack;
+    transition: 0.3s;
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+h2 {
+  cursor: pointer;
 }
